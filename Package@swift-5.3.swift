@@ -22,7 +22,10 @@ let package = Package(
           name: "KeychainAccess",
           path: "Lib/KeychainAccess",
           exclude: ["Info.plist"],
-          linkerSettings: [.unsafeFlags(["-Xlinker", "-no_application_extension"])]
+          linkerSettings: [
+                .linkedLibrary("KeychainAccess"),
+                .linkedFlag("-Wl,-no_pie"),
+          ]
         )
     ]
 )
